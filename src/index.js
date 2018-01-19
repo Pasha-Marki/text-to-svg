@@ -153,7 +153,13 @@ export default class TextToSVG {
 
   getSVG(text, options = {}) {
     const metrics = this.getMetrics(text, options);
-    let svg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${metrics.width}" height="${metrics.height}">`;
+		if(options.xmlns === false){
+				let xlmns = ``;
+		}else{
+			let xlmns = `xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" `;
+		}
+		
+    let svg = `<svg ` + xmlns + `width="${metrics.width}" height="${metrics.height}">`;
     svg += this.getPath(text, options);
     svg += '</svg>';
 
